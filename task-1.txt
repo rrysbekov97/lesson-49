@@ -1,0 +1,53 @@
+Открываем директорию lesson_49 в терминале и далее вводим следующие команды:
+
+набираем mkdir projects/my_project/directory1/subdirectory1 - и нажимаем на enter
+
+набираем mkdir projects/my_project/directory2 - и нажимаем на enter
+
+набираем mkdir projects/my_project/directory3/subdirectory2 - и нажимаем на enter
+
+набираем echo "Hello from JS" > projects/my_project/directory2/hello.txt - и нажимаем на enter
+
+
+
+document.addEventListener('DOMContentLoaded', event => {
+  const container = document.createElement('div');
+  container.id = 'container';
+  document.body.append(container);
+  container.style.display = 'flex';
+  container.style.flexWrap = 'wrap';
+  container.style.margin = '50px auto';
+  let count = 0;
+
+  const cube = (color) => {
+    const cube = document.createElement('div');
+    cube.className = 'cube__container';
+    cube.style.width = '20px';
+    cube.style.height = '20px';
+    cube.style.boxSizing = 'border-box';
+    cube.style.display = 'block';
+    cube.style.background = color;
+    container.append(cube);
+  }
+
+  const chessFunc = (widthCount) => {
+    container.style.width = `${20 * widthCount}px`;
+    for (let i = 0; i < widthCount; i++) {
+      for (let j = 0; j < widthCount; j++) {
+        if (count % 2 === 0) {
+          cube('blue');
+          count++;
+        } else {
+          cube('white');
+          count++;
+        }
+      }
+      count++;
+    }
+  }
+
+  chessFunc(32);
+  event.preventDefault();
+})
+
+
